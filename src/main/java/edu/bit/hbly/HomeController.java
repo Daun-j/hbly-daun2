@@ -43,6 +43,13 @@ public class HomeController {
 		return "homemarket";
 	}
 	
+	// login form
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login() {
+		logger.info("login page");
+		return "login";
+	}
+	
 	// join form
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
 	public String memberJoin() {

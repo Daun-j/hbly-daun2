@@ -47,7 +47,7 @@ with Pingendo Free&nbsp;&nbsp;<img
 						<li class="nav-item"><a class="nav-link" href="#">고객센터</a></li>
 						<li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
 					</ul>
-					<a class="btn navbar-btn ml-md-2 btn-light">로그인</a>
+					<a class="btn navbar-btn ml-md-2 btn-light" href="/login">로그인</a>
 				</div>
 			</div>
 		</nav>
