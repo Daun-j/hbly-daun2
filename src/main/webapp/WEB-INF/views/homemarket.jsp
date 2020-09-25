@@ -10,6 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
 <link rel="stylesheet" href="https://static.pingendo.com/bootstrap/bootstrap-4.3.1.css">
+
 </head>
 <body>
 
@@ -75,7 +76,8 @@
     <div class="container">
       <div class="row">
       	<!-- category -->
-        <div class="col-md-4"></div>
+        <div class="col-md-4">
+        </div>
         <!-- product img ad -->
         <div class="col-md-8">
           <div class="carousel slide" data-ride="carousel" id="carousel">
