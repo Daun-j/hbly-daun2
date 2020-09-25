@@ -16,6 +16,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import edu.bit.hbly.service.MemberService;
 import edu.bit.hbly.vo.MemberVO;
 
+
+
 /**
  * Handles requests for the application home page.
  */
@@ -34,6 +36,13 @@ public class HomeController {
 		return "home";
 	}
 
+	// main market form
+	@RequestMapping(value = "/market", method = RequestMethod.GET)
+	public String home2() {
+		logger.info("main market page");
+		return "homemarket";
+	}
+	
 	// join form
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
 	public String memberJoin() {

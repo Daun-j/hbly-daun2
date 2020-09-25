@@ -5,7 +5,7 @@
 <html>
 <html>
 <head>
-<title>HBLY</title>
+<title>HBLY : Board</title>
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -98,7 +98,7 @@ with Pingendo Free&nbsp;&nbsp;<img
 							class="nav-link navbar-brand mr-0 text-white" href="#"><i
 								class="fa fa-comments-o" aria-hidden="true"></i> <b>커뮤니티</b></a></li>
 						<li class="nav-item mx-2"><a
-							class="nav-link navbar-brand mr-0 text-white" href="#"><i
+							class="nav-link navbar-brand mr-0 text-white" href="/market"><i
 								class="fa fa-shopping-basket" aria-hidden="true"></i> <b>마켓</b></a>
 						</li>
 						<li class="nav-item mx-2"><a
