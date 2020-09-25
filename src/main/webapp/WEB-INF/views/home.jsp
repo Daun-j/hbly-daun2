@@ -117,7 +117,7 @@ with Pingendo Free&nbsp;&nbsp;<img
 				<div class="card text-center">
 					<div class="card-header">
 						<ul class="nav nav-tabs card-header-tabs">
-							<li class="nav-item"><a class="nav-link" data-toggle="tab"
+							<li class="nav-item"><a class="nav-link active" data-toggle="tab"
 								data-target="#tabone">NEW Tab 1</a></li>
 							<li class="nav-item" style=""><a class="nav-link" href=""
 								data-toggle="tab" data-target="#tabtwo">BEST Tab 2</a></li>

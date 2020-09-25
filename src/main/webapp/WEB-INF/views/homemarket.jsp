@@ -19,7 +19,7 @@
       <div class="container">
         <div class="collapse navbar-collapse" id="navbar4">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item"><a class="nav-link" href="/hbly/join">회원가입</a></li>
+            <li class="nav-item"><a class="nav-link" href="/join">회원가입</a></li>
             <li class="nav-item"><a class="nav-link" href="#">고객센터</a></li>
             <li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
           </ul>
@@ -109,13 +109,11 @@
   <div class="py-4 bg-light" >
     <div class="container">
       <div class="row">
-     	<a class="text-body" href="/">
         <div class="col-md-4 p-3">
           <div class="card box-shadow">
-            <!-- <a href="/">-->
+            <a href="/">
             <img class="card-img-top" src="https://pingendo.com/assets/photos/wireframe/photo-1.jpg">
-            <!-- </a>-->
-                        
+            </a>        
             <div class="card-body">
               <p class="card-text"><b>상품명</b></p>
               <i class="fa d-inline-block fa-star text-warning"></i>
@@ -135,7 +133,6 @@
             </div>
           </div>
         </div>
-        </a>
         <div class="col-md-4 p-3">
           <div class="card box-shadow">
             <img class="card-img-top" src="https://pingendo.com/assets/photos/wireframe/photo-1.jpg">
