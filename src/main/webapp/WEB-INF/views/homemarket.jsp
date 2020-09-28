@@ -24,7 +24,7 @@
             <li class="nav-item"><a class="nav-link" href="#">고객센터</a></li>
             <li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
           </ul>
-          <a class="btn navbar-btn ml-md-2 btn-light">로그인</a>
+          <a class="btn navbar-btn ml-md-2 btn-light" href="/login">로그인</a>
         </div>
       </div>
     </nav>
@@ -61,8 +61,8 @@
         </button>
         <div class="navbar-collapse text-center justify-content-center collapse show" id="navbar15" style="">
           <ul class="navbar-nav">
-            <li class="nav-item mx-2"><a class="nav-link navbar-brand mr-0 text-white" href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> <b>커뮤니티</b></a></li>
-            <li class="nav-item mx-2"><a class="nav-link navbar-brand mr-0 text-white" href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i> <b>마켓</b></a>
+            <li class="nav-item mx-2"><a class="nav-link navbar-brand mr-0 text-white" href="/"><i class="fa fa-comments-o" aria-hidden="true"></i> <b>커뮤니티</b></a></li>
+            <li class="nav-item mx-2"><a class="nav-link navbar-brand mr-0 text-white" href="/market"><i class="fa fa-shopping-basket" aria-hidden="true"></i> <b>마켓</b></a>
             </li>
             <li class="nav-item mx-2"><a class="nav-link navbar-brand mr-0 text-white" href="#"><i class="fa fa-handshake-o" aria-hidden="true"></i> <b>중고거래</b></a></li>
           </ul>
@@ -113,7 +113,7 @@
       <div class="row">
         <div class="col-md-4 p-3">
           <div class="card box-shadow">
-            <a href="/">
+            <a href="/goodsInfo">
             <img class="card-img-top" src="https://pingendo.com/assets/photos/wireframe/photo-1.jpg">
             </a>        
             <div class="card-body">

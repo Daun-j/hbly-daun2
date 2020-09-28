@@ -5,7 +5,7 @@
 <html>
 <html>
 <head>
-<title>HBLY : Board</title>
+<title>HBLY</title>
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,13 +26,6 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
 	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 	crossorigin="anonymous" style=""></script>
-
-<!-- popup -->
-<pingendo onclick="window.open('https://pingendo.com/', '_blank')"
-	style="cursor:pointer;position: fixed;bottom: 20px;right:20px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:220px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made
-with Pingendo Free&nbsp;&nbsp;<img
-	src="https://pingendo.com/site-assets/Pingendo_logo_big.png"
-	class="d-block" alt="Pingendo logo" height="16"></pingendo>
 	
 </head>
 <body>
@@ -95,7 +88,7 @@ with Pingendo Free&nbsp;&nbsp;<img
 					id="navbar15" style="">
 					<ul class="navbar-nav">
 						<li class="nav-item mx-2"><a
-							class="nav-link navbar-brand mr-0 text-white" href="#"><i
+							class="nav-link navbar-brand mr-0 text-white" href="/"><i
 								class="fa fa-comments-o" aria-hidden="true"></i> <b>커뮤니티</b></a></li>
 						<li class="nav-item mx-2"><a
 							class="nav-link navbar-brand mr-0 text-white" href="/market"><i
