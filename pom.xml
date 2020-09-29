@@ -232,7 +232,13 @@
 			<artifactId>spring-security-taglibs</artifactId>
 			<version>${org.security-version}</version>
 		</dependency>
-
+		
+		<!-- cool sms -->
+		<dependency>
+		    <groupId>net.nurigo</groupId>
+		    <artifactId>javaSDK</artifactId>
+		    <version>2.2</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>

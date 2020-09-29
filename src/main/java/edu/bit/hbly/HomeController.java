@@ -1,27 +1,35 @@
 package edu.bit.hbly;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.codec.binary.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.bit.hbly.service.MemberService;
 import edu.bit.hbly.vo.MemberVO;
 
-/**
- * Handles requests for the application home page.
- */
 @Controller
 public class HomeController {
 
@@ -107,8 +115,71 @@ public class HomeController {
 		return "test";
 	}
 
+
+	
+	
+	@RequestMapping(value = "/sms", method = RequestMethod.POST)
+	@ResponseBody
+	public ResponseEntity<String> supporterSms(@RequestBody String jsonData) throws Exception {
+		
+		System.out.println(jsonData.toString());
+		Map<String,String> signature = makeSignature();
+		
+		//{serviceId} : 프로젝트 등록 시 발급받은 서비스 아이디 : ncp:sms:kr:260797945287:hbly_sms
+		String url = "https://sens.apigw.ntruss.com/sms/v2/services/ncp:sms:kr:260797945287:hbly_sms/messages";
+
+		HttpHeaders headers = new HttpHeaders();
+		headers.set("Content-Type", "application/json; charset=UTF-8");
+		headers.set("x-ncp-apigw-timestamp", signature.get("timestamp"));
+		headers.set("x-ncp-iam-access-key", signature.get("accessKey"));
+		headers.set("x-ncp-apigw-signature-v2", signature.get("signature"));
+		
+		HttpEntity<String> request = new HttpEntity<String>(jsonData,headers);
+		
+		RestTemplate rt = new RestTemplate();
+		ResponseEntity<String> responseEntity = rt.postForEntity(url, request, String.class);
+		
+		return responseEntity;
+	}
+	
+	public Map<String,String> makeSignature() throws Exception {
+		String space = " ";					// one space
+		String newLine = "\n";					// new line
+		String method = "POST";					// method
+		String url = "/sms/v2/services/ncp:sms:kr:260797945287:hbly_sms/messages";	// url (include query string)
+		String timestamp = System.currentTimeMillis()+"";			// current timestamp (epoch)
+		String accessKey = "JdlX8LeIrOsfM2oDZyZb";			// access key id (from portal or Sub Account)
+		String secretKey = "E98bFDlrbeEmvUuyupDQr8jKZvhZh8CXj5lSMTNA";
+		
+		String message = new StringBuilder()
+			.append(method)
+			.append(space)
+			.append(url)
+			.append(newLine)
+			.append(timestamp)
+			.append(newLine)
+			.append(accessKey)
+			.toString();
+
+		SecretKeySpec signingKey = new SecretKeySpec(secretKey.getBytes("UTF-8"), "HmacSHA256");
+		Mac mac = Mac.getInstance("HmacSHA256");
+		mac.init(signingKey);
+
+		byte[] rawHmac = mac.doFinal(message.getBytes("UTF-8"));
+		String encodeBase64String = Base64.encodeBase64String(rawHmac);
+		
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("signature", encodeBase64String);
+		map.put("accessKey", accessKey);
+		map.put("timestamp", timestamp);
+
+	  return map;
+	}
 	// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
+	
+	
+	
 	// login get
 //	@RequestMapping(value = "/signin", method = RequestMethod.GET)
 //	public void getSignin() throws Exception {
