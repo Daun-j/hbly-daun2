@@ -11,11 +11,9 @@ import lombok.Setter;
 @Setter
 public class MessageVO {
 	private String to;
-	private String subject;
-	private String content;
 	
 	@Override
 	public String toString() {
-		return "MessageVO [to : "+to+", subject : "+subject+", content : "+content+"]";
+		return "MessageVO [to : "+to+"]";
 	}
 }

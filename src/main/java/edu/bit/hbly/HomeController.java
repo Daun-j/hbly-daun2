@@ -29,6 +29,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.bit.hbly.service.MemberService;
 import edu.bit.hbly.vo.MemberVO;
+import edu.bit.hbly.vo.MessageVO;
 
 @Controller
 public class HomeController {
@@ -115,8 +116,31 @@ public class HomeController {
 		return "test";
 	}
 
+	@RequestMapping(value = "/test3", method = RequestMethod.POST)
+	public String test3(@ModelAttribute MemberVO memberVO, RedirectAttributes rttr, HttpServletResponse response)
+			throws Exception {
+		logger.info("휴대폰인증완료");
 
+		return "test3";
+	}
 	
+	// memberjoin
+	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	public String test(@ModelAttribute MemberVO memberVO, RedirectAttributes rttr, HttpServletResponse response)
+			throws Exception {
+		logger.info("test");
+
+		return "test2";
+	}
+	
+	@RequestMapping(value = "/smstest", method = RequestMethod.POST)
+	@ResponseBody
+	public void smstest(MessageVO messageVO)
+			throws Exception {
+		logger.info("smstest");
+		System.out.println(messageVO.getTo());
+		//return messageVO.getTo();
+	}
 	
 	@RequestMapping(value = "/sms", method = RequestMethod.POST)
 	@ResponseBody
@@ -125,6 +149,7 @@ public class HomeController {
 		System.out.println(jsonData.toString());
 		Map<String,String> signature = makeSignature();
 		
+		//요청 URL HTTP : POST https://sens.apigw.ntruss.com/sms/v2/services/{serviceId}/messages
 		//{serviceId} : 프로젝트 등록 시 발급받은 서비스 아이디 : ncp:sms:kr:260797945287:hbly_sms
 		String url = "https://sens.apigw.ntruss.com/sms/v2/services/ncp:sms:kr:260797945287:hbly_sms/messages";
 
@@ -143,7 +168,7 @@ public class HomeController {
 	}
 	
 	public Map<String,String> makeSignature() throws Exception {
-		String space = " ";					// one space
+		String space = " ";						// one space
 		String newLine = "\n";					// new line
 		String method = "POST";					// method
 		String url = "/sms/v2/services/ncp:sms:kr:260797945287:hbly_sms/messages";	// url (include query string)
@@ -175,46 +200,6 @@ public class HomeController {
 
 	  return map;
 	}
-	// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
-	
-	
-	
-	// login get
-//	@RequestMapping(value = "/signin", method = RequestMethod.GET)
-//	public void getSignin() throws Exception {
-//		logger.info("get signin");
-//	}
-//
-//	// login post
-//	@RequestMapping(value = "/signin", method = RequestMethod.POST)
-//	public String postSignin(MemberVO vo, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
-//		logger.info("post signin");
-//
-//		MemberVO login = service.signin(vo);
-//		HttpSession session = req.getSession();
-//
-//		boolean passwordMatch = bcryptPasswordEncoder.matches(vo.getUserPassword(), login.getUserPassword());
-//
-//		if (login != null && passwordMatch) {
-//			session.setAttribute("member", login);
-//		} else {
-//			session.setAttribute("member", null);
-//			rttr.addFlashAttribute("msg", false);
-//			return "redirect:/member/signin";
-//		}
-//
-//		return "redirect:/";
-//	}
-//
-//	// 로그아웃
-//	@RequestMapping(value = "/signout", method = RequestMethod.GET)
-//	public String signout(HttpSession session) throws Exception {
-//		logger.info("get logout");
-//
-//		service.signout(session);
-//
-//		return "redirect:/";
-//	}
 
 }
