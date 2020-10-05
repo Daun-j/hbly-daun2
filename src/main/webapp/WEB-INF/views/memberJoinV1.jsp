@@ -39,8 +39,8 @@
 					<p class="mb-3">When, while the lovely valley teems with vapour around me, and the meridian sun strikes the upper surface of the impenetrable foliage of my trees.</p>
 
 					<!-- form -->
-					<form id="joinForm" method="post" class="text-left" action="joinMember">
-
+					<form id="joinForm" method="post" class="text-left" action="joinMember">									
+						
 						<!-- id -->
 						<div class="form-group">
 							<label for="userId">아이디</label>
@@ -66,7 +66,7 @@
 						<!-- name -->
 						<div class="form-group">
 							<label for="form4">이름</label>
-							<input type="text" class="form-control" id="userName" name="userName" required>
+							<input type="text" class="form-control" id="userName" name="userName" placeholder="name" required>
 							<div id="nameCheck"></div>
 						</div>
 
@@ -80,35 +80,8 @@
 						<!-- nickname -->
 						<div class="form-group">
 							<label for="form6">닉네임</label>
-							<input type="text" class="form-control" id="userNickname" name="userNickname" required>
+							<input type="text" class="form-control" id="userNickname" name="userNickname" placeholder="nickname" required>
 							<div id="nicknameCheck"></div>
-						</div>
-						
-						<!-- phone number -->
-						<div class="form-group">
-							<label for="form7">휴대전화 ('-' 없이 번호만 입력해주세요) </label>
-						</div>
-
-						<div class="form-group">
-							<select class="form-control">
-								<option value="대한민국 +82">대한민국 +82</option>
-								<option value="미국/캐나다 +1">미국/캐나다 +1</option>
-							</select>
-						</div>
-
-						<div class="form-row">
-							<div class="form-group col-md-8">
-								<input type="text" class="form-control" id="userPhoneNumber" name="userPhoneNumber" placeholder="01012345678" required>
-							</div>
-
-							<div class="form-group col-md-4">
-								<button type="button" class="btn btn-primary">인증번호 받기</button>
-							</div>
-
-						</div>
-
-						<div class="form-group">
-							<input type="text" class="form-control" id="form8">
 						</div>
 						
 						<!-- address -->
@@ -135,12 +108,50 @@
 								<input type="text" class="form-control" id="userAddress3" name="userAddress3"placeholder="상세주소" required>
 							</div>
 						</div>
+						
+						<!-- phone number -->
+						<div class="form-group">
+							<label for="form7">휴대전화 ('-' 없이 번호만 입력해주세요) </label>
+						</div>
 
+						<div class="form-group">
+							<select class="form-control">
+								<option value="대한민국 +82">대한민국 +82</option>
+								<option value="미국/캐나다 +1">미국/캐나다 +1</option>
+							</select>
+						</div>
+
+						<div class="form-row">
+							<div class="form-group col-md-8">
+								<input type="text" class="form-control" id="userPhoneNumber" name="userPhoneNumber" placeholder="01012345678" required>
+							</div>
+
+							<div class="form-group col-md-4">
+								<button type="button" class="btn btn-primary" onclick="cert();">인증번호 받기</button>
+							</div>
+
+						</div>
+						
+						<div class="form-row">
+							<div class="form-group col-md-8">
+								<input type="text" class="form-control" id="certification"  placeholder="인증번호를 입력해주세요" required>
+								<div class="form-group" id="certCheck"></div>	
+							</div>
+
+							<div class="form-group col-md-4">
+								<button type="button" class="btn btn-primary" id="sms_AuthBtn" onclick="smsAuthBtn();">확인</button>
+							</div>
+		
+						
+						</div>	
+														
+						<input type="hidden" id="randomVal" value=""/>	
+						
+						<!-- term -->
 						<div class="form-group">
 							<label for="form10">이용약관</label>
 						</div>
-
-						<!-- term -->
+						
 						<div class="form-group">
 							<textarea class="form-control" id="form10" rows="4"
 								placeholder="Your message" readonly="readonly"></textarea>
@@ -165,6 +176,73 @@
 	</div>
 
 </body>
+<!--휴대폰 인증 -->
+<script type="text/javascript">
+	function cert() {
+		 var random = Math.floor(Math.random() * 1000000)+"";
+		 var phone = $('#userPhoneNumber').val();				 
+		 
+		 $('#randomVal').val(random);
+			var obj = {
+					"type" : "SMS",
+					"contentType" : "COMM",
+					"from" : "01090955190",
+					"subject" : "HBLY 가입 본인인증 문자입니다",
+					"countryCode" : "82",
+					"content" : random,
+					"messages" : [ {
+						"to" : phone,
+						"subject" : "HBLY 인증 문자",
+						"content" : "[HBLY] 회원가입 본인인증 문자입니다. 인증번호 [" + random +"]를 입력해주세요."
+					} ]
+				};
+			
+			$.ajax({
+				type : 'POST',
+				url : "sms",
+				dataType : "json",
+				data :  JSON.stringify(obj),
+				contentType: "application/json",
+				success : function(data) {
+					if(data.statusName == "success"){
+						$('#certCheck').text("인증 번호가 전송되었습니다.");
+						$('#certCheck').css('color','blue');
+					}else {
+						$('#certCheck').text("입력한 번호를 다시 확인해주세요.");
+						$('#certCheck').css('color','red');
+					}
+				}
+			});
+	}
+	
+	function smsAuthBtn() {
+		
+		var userVal = $('#certification').val();
+		var certVal = $('#randomVal').val();
+		console.log(userVal);
+		console.log(certVal);
+		
+		if(userVal == certVal){
+			$('#certCheck').text("");
+			/* $.ajax({
+				type : "post",
+				url : "test3",
+				data : $('#sup').serialize(),
+				complete : function(data) {
+					swal("성공", "서포터 등록에 성공하셨습니다", "success").then(function(){
+					//location.href="${root}main"
+					location.href="/"
+					});
+				}
+			}); */
+		}else{
+			$('#certCheck').text("인증번호를 다시 확인해주세요");
+			$('#certCheck').css('color','red');
+		}
+	};
+</script>
+
+<!--유효성 검사 -->
 <script>
 
 	//모든 공백 체크 정규식
@@ -293,7 +371,7 @@
 			console.log(phoneJ.test($(this).val()));
 			$("#phoneCheck").text('');
 		} else {
-			$('#phoneCheck').text('휴대폰번호를 확인해주세요 :)');
+			$('#phoneCheck').text('휴대폰번호를 확인해주세요 ');
 			$('#phoneCheck').css('color', 'red');
 		}
 	});
@@ -324,12 +402,12 @@
 		    
 		    }else if (day < 1 || day > 31) {
 		    	
-		    	$('#birthCheck').text('생년월일을 확인해주세요 :)');
+		    	$('#birthCheck').text('생년월일을 확인해주세요.');
 				$('#birthCheck').css('color', 'red'); 
 		    	
 		    }else if ((month==4 || month==6 || month==9 || month==11) && day==31) {
 		    	 
-		    	$('#birthCheck').text('생년월일을 확인해주세요 :)');
+		    	$('#birthCheck').text('생년월일을 확인해주세요.');
 				$('#birthCheck').css('color', 'red'); 
 		    	 
 		    }else if (month == 2) {
@@ -338,7 +416,7 @@
 		       	
 		     	if (day>29 || (day==29 && !isleap)) {
 		     		
-		     		$('#birthCheck').text('생년월일을 확인해주세요 :)');
+		     		$('#birthCheck').text('생년월일을 확인해주세요.');
 					$('#birthCheck').css('color', 'red'); 
 		    	
 				}else{
@@ -354,7 +432,7 @@
 			
 			}else{
 				//1.입력된 생년월일이 8자 초과할때 :  auth:false
-				$('#birthCheck').text('생년월일을 확인해주세요 :)');
+				$('#birthCheck').text('생년월일을 확인해주세요.');
 				$('#birthCheck').css('color', 'red');  
 			}
 		}); //End of method /*
@@ -411,7 +489,7 @@
 				/* location.href("${pageContext.request.contextPath}"); */
 				/* return false; */
 			} else{
-				alert('입력한 정보들을 다시 한번 확인해주세요 :)')
+				alert('입력한 정보들을 다시 한번 확인해주세요.')
 				/* return false; */
 			}
 		});

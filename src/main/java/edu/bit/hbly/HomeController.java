@@ -115,16 +115,8 @@ public class HomeController {
 
 		return "test";
 	}
-
-	@RequestMapping(value = "/test3", method = RequestMethod.POST)
-	public String test3(@ModelAttribute MemberVO memberVO, RedirectAttributes rttr, HttpServletResponse response)
-			throws Exception {
-		logger.info("휴대폰인증완료");
-
-		return "test3";
-	}
 	
-	// memberjoin
+	// test
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
 	public String test(@ModelAttribute MemberVO memberVO, RedirectAttributes rttr, HttpServletResponse response)
 			throws Exception {
@@ -133,15 +125,7 @@ public class HomeController {
 		return "test2";
 	}
 	
-	@RequestMapping(value = "/smstest", method = RequestMethod.POST)
-	@ResponseBody
-	public void smstest(MessageVO messageVO)
-			throws Exception {
-		logger.info("smstest");
-		System.out.println(messageVO.getTo());
-		//return messageVO.getTo();
-	}
-	
+	// memberjoin - phonenumber check / sms send -- 1
 	@RequestMapping(value = "/sms", method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<String> supporterSms(@RequestBody String jsonData) throws Exception {
@@ -166,7 +150,7 @@ public class HomeController {
 		
 		return responseEntity;
 	}
-	
+	// memberjoin - phonenumber check / sms send -- 2 making signature	
 	public Map<String,String> makeSignature() throws Exception {
 		String space = " ";						// one space
 		String newLine = "\n";					// new line

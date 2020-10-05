@@ -1,9 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page session="false"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
 	language="java"%>
-<c:set var="root" value="${pageContext.request.contextPath}/" />
 
 <!DOCTYPE html>
 <html>
@@ -13,7 +11,7 @@
 <title>API TEST</title>
 </head>
 <body>
-<!-- phone number -->
+						<!-- phone number -->
 						<div class="form-group">
 							<label for="form7">휴대전화 ('-' 없이 번호만 입력해주세요) </label>
 						</div>
@@ -68,7 +66,9 @@
 									contentType: "application/json",
 									success : function(data) {
 										if(data.statusName == "success"){
-											swal("성공", "인증 문자가 성공적으로 전송되었습니다", "success");
+											$('#certCheck').text("인증 문자가 전송되었습니다.");
+										}else if(data.statusName == "fail"){
+											$('#certCheck').text("입력한 번호를 다시 확인해주세요.");
 										}
 									}
 								});
