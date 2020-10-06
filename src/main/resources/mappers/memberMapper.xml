@@ -17,8 +17,8 @@
 
 <!-- 회원 가입 -->
 <insert id="joinMember">
-	insert into tbl_member (userId,userPassword,userName,userBirth,userNickname,userPhoneNumber,userAddress1,userAddress2,userAddress3) 
-	values(#{userId},#{userPassword},#{userName},#{userBirth},#{userNickname},#{userPhoneNumber},#{userAddress1},#{userAddress2},#{userAddress3})
+	insert into tbl_member (userId,userPassword,userName,userBirth,userGender,userNickname,userPhoneNumber,userAddress1,userAddress2,userAddress3) 
+	values(#{userId},#{userPassword},#{userName},#{userBirth},#{userGender},#{userNickname},#{userPhoneNumber},#{userAddress1},#{userAddress2},#{userAddress3})
 </insert>
 
 </mapper>

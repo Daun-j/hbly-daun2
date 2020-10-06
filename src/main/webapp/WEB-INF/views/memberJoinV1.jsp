@@ -51,42 +51,57 @@
 						<!-- password -->
 						<div class="form-row">
 							<div class="form-group col-md-6">
-								<label for="form2">비밀번호</label>
+								<label for="userPassword">비밀번호</label>
 								<input type="password" class="form-control" id="userPassword" name="userPassword" placeholder="password" required>
 								<div id="pwCheck"></div>
 							</div>
 
 							<div class="form-group col-md-6">
-								<label for="form3">비밀번호 재확인</label>
-								<input type="password" class="form-control" id="userPasswordCheck" name="userPasswordCheck" placeholder="Confirm Password" required>
+								<label for="userPasswordCheck">비밀번호 재확인</label>
+								<input type="password" class="form-control" id="userPasswordCheck" name="userPasswordCheck" placeholder="confirm Password" required>
 								<div id="pw2Check"></div>
 							</div>
 						</div>
 
 						<!-- name -->
 						<div class="form-group">
-							<label for="form4">이름</label>
+							<label for="userName">이름</label>
 							<input type="text" class="form-control" id="userName" name="userName" placeholder="name" required>
 							<div id="nameCheck"></div>
 						</div>
 
 						<!-- birth -->
 						<div class="form-group">
-							<label for="form5">생년월일</label>
+							<label for="userBirth">생년월일</label>
 							<input type="text" class="form-control" id="userBirth" name="userBirth" placeholder="ex)19991225" required>
 							<div id="birthCheck"></div>
 						</div>
-
+	
+						<!-- gender -->
+						<div class="form-group" >
+						    <label for="userGender">성별</label>
+						    <div class="row">
+						      <div class="col-md-6">
+						        <div class="custom-control custom-radio">
+						          <input id="man" name="userGender" type="radio" class="custom-control-input" checked required value="M"> <label class="custom-control-label" for="man">남자</label> </div>
+						      </div>
+						      <div class="col-md-6">
+						        <div class="custom-control custom-radio">
+						          <input id="woman" name="userGender" type="radio" class="custom-control-input" required value="F"> <label class="custom-control-label" for="woman">여자</label> </div>
+						      </div>
+						    </div>
+						</div>
+						
 						<!-- nickname -->
 						<div class="form-group">
-							<label for="form6">닉네임</label>
+							<label for="userNickname">닉네임</label>
 							<input type="text" class="form-control" id="userNickname" name="userNickname" placeholder="nickname" required>
 							<div id="nicknameCheck"></div>
 						</div>
 						
 						<!-- address -->
 						<div class="form-group">
-							<label for="form9">주소</label>
+							<label for="userAddress">주소</label>
 						</div>
 
 						<div class="form-row">
@@ -111,7 +126,7 @@
 						
 						<!-- phone number -->
 						<div class="form-group">
-							<label for="form7">휴대전화 ('-' 없이 번호만 입력해주세요) </label>
+							<label for="userPhoneNumber">휴대전화 ('-' 없이 번호만 입력해주세요) </label>
 						</div>
 
 						<div class="form-group">
@@ -123,7 +138,7 @@
 
 						<div class="form-row">
 							<div class="form-group col-md-8">
-								<input type="text" class="form-control" id="userPhoneNumber" name="userPhoneNumber" placeholder="01012345678" required>
+								<input type="text" class="form-control" id="userPhoneNumber" name="userPhoneNumber" placeholder="ex)01012345678" required>
 							</div>
 
 							<div class="form-group col-md-4">
@@ -134,7 +149,7 @@
 						
 						<div class="form-row">
 							<div class="form-group col-md-8">
-								<input type="text" class="form-control" id="certification"  placeholder="인증번호를 입력해주세요" required>
+								<input type="text" class="form-control" id="certification"  placeholder="인증번호를 입력해주세요" >
 								<div class="form-group" id="certCheck"></div>	
 							</div>
 
@@ -164,17 +179,15 @@
 						</div>
 
 						<!-- button -->
-						<button type="submit" id="joinBtn" class="btn btn-primary">Sign in</button>
-						<a href="${pageContext.request.contextPath}" class="btn btn-primary">Cancel</a>
+						<button type="submit" id="joinBtn" class="btn btn-primary">가입하기</button>
+						<a href="${pageContext.request.contextPath}" class="btn btn-primary">취소</a>
 					</form>
-
-				</div>
 
 			</div>
 
 		</div>
 	</div>
-
+</div>
 </body>
 <!--휴대폰 인증 -->
 <script type="text/javascript">

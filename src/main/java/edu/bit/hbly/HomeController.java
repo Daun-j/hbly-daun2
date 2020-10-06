@@ -109,6 +109,7 @@ public class HomeController {
 			throws Exception {
 		logger.info("join Member");
 		// test code1
+		System.out.println(memberVO.getUserGender());
 		System.out.println(memberVO.getUserId());
 		// memberjoin method
 		service.joinMember(memberVO, response);
@@ -150,6 +151,7 @@ public class HomeController {
 		
 		return responseEntity;
 	}
+	
 	// memberjoin - phonenumber check / sms send -- 2 making signature	
 	public Map<String,String> makeSignature() throws Exception {
 		String space = " ";						// one space
