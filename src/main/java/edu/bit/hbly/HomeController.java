@@ -41,7 +41,7 @@ public class HomeController {
 	
 	// pageㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
-	// main form
+	// main board form
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home() {
 		logger.info("main page");
@@ -55,7 +55,7 @@ public class HomeController {
 		return "homemarket";
 	}
 
-	// join form
+	// goodsInfo form
 	@RequestMapping(value = "/goodsInfo", method = RequestMethod.GET)
 	public String goodsInfo() {
 		logger.info("goodsInfo page");
@@ -69,13 +69,36 @@ public class HomeController {
 		return "login";
 	}
 
+	// idInqury form
+	@RequestMapping(value = "/idInqury", method = RequestMethod.GET)
+	public String idInqury() {
+		logger.info("idInqury page");
+		return "idInqury";
+	}
+	
+	// pwInqury form
+	@RequestMapping(value = "/pwInqury", method = RequestMethod.GET)
+	public String pwInqury() {
+		logger.info("pwInqury page");
+		return "pwInqury";
+	}
+	
 	// join form
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
 	public String memberJoin() {
 		logger.info("join page");
 		return "memberJoinV1";
 	}
+	
+	// blyInfo
+	@RequestMapping(value = "/blyInfo", method = RequestMethod.GET)
+	public String test3(@ModelAttribute MemberVO memberVO, RedirectAttributes rttr, HttpServletResponse response)
+			throws Exception {
+		logger.info("blyInfo");
 
+		return "blyInfo";
+	}
+	
 	// joinㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
 	// memberjoin - id(email) check (Ajax)
@@ -113,7 +136,7 @@ public class HomeController {
 		return "test";
 	}
 	
-	// test
+	// sms test
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
 	public String test(@ModelAttribute MemberVO memberVO, RedirectAttributes rttr, HttpServletResponse response)
 			throws Exception {
@@ -121,6 +144,8 @@ public class HomeController {
 
 		return "test2";
 	}
+
+	// memberjoin sms 
 	
 	// memberjoin - phonenumber check / sms send -- 1
 	@RequestMapping(value = "/sms", method = RequestMethod.POST)

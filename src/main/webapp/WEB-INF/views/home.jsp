@@ -30,8 +30,9 @@
 </head>
 <body>
 
-	<!-- header -->
+	<!-- nav & header -->
 	<div>
+		<!-- nav -->
 		<nav class="navbar navbar-expand-md navbar-light">
 			<div class="container">
 				<div class="collapse navbar-collapse" id="navbar4">
@@ -44,7 +45,8 @@
 				</div>
 			</div>
 		</nav>
-
+		
+		<!-- header -->
 		<nav class="navbar navbar-expand-lg navbar-light">
 			<div class="container">
 				<div class="collapse navbar-collapse" id="navbar8">
@@ -62,29 +64,30 @@
 						</div>
 					</div>
 					<ul class="navbar-nav mr-3">
-						<li class="nav-item ml-2"><a class="nav-link" href="#"> <i
-								class="fa fa-user-circle" aria-hidden="true"></i>
+						<li class="nav-item ml-2"><a class="nav-link" href="/blyInfo"> <i
+								class="fa fa-user-circle fa-3x" aria-hidden="true"></i>
 						</a></li>
 						<li class="nav-item ml-2"><a class="nav-link" href="#"> <i
-								class="fa fa-gitlab fa-fw fa-lg"></i>
+								class="fa fa-shopping-cart fa-3x"></i>
 						</a></li>
 						<li class="nav-item ml-2"><a class="nav-link" href="#"> <i
-								class="fa fa-bitbucket fa-fw fa-lg"></i>
+								class="fa fa-bell fa-3x"></i>
 						</a></li>
 					</ul>
 				</div>
 			</div>
 		</nav>
-
+		
+		<!-- menu -->
 		<nav class="navbar navbar-expand-md navbar-dark bg-primary">
 			<div class="container justify-content-center">
 				<button class="navbar-toggler navbar-toggler-right border-0"
 					type="button" data-toggle="collapse" data-target="#navbar15"
 					aria-expanded="true">
-					<span class="navbar-toggler-icon" style=""></span>
+					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div
-					class="navbar-collapse text-center justify-content-center collapse show"
+					class="navbar-collapse collapse show"
 					id="navbar15" style="">
 					<ul class="navbar-nav">
 						<li class="nav-item mx-2"><a
@@ -118,7 +121,7 @@
 					</div>
 					<div class="card-body">
 						<div class="tab-content mt-2">
-							<div class="tab-pane fade" id="tabone" role="tabpanel">
+							<div class="tab-pane fade active show" id="tabone" role="tabpanel">
 								<p class="">When I hear the buzz of the little world among
 									the stalks, and grow familiar with the countless indescribable
 									forms.</p>
@@ -258,9 +261,9 @@
 													<thead>
 														<tr>
 															<th>번호</th>
-															<th>제목</th>
+															<th class="w-50">제목</th>
 															<th>글쓴이</th>
-															<th contenteditable="true">작성일</th>
+															<th>작성일</th>
 															<th>조회</th>
 															<th>추천</th>
 														</tr>

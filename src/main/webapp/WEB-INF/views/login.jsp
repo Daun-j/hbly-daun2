@@ -19,7 +19,7 @@
           <form>
             <div class="form-group"> <input type="email" class="form-control" placeholder="Enter email" id="form9"> </div>
             <div class="form-group mb-3"> <input type="password" class="form-control" placeholder="Password" id="form10"> <small class="form-text text-muted text-right">
-                <a href="#">회원가입</a> | <a href="#">ID / PW 찾기</a>
+                <a href="#">회원가입</a> | <a href="/idInqury">아이디</a>/<a href="/pwInqury"> 비밀번호 찾기</a>
               </small> </div> <button type="submit" class="btn btn-primary">로그인</button>
           </form>
           <hr>
